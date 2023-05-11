@@ -1,0 +1,18 @@
+.container {
+    width: 20%;
+    margin: 50vh auto;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    justify-content: center;
+}
+
+.button {
+    width: 30%;
+}
+a {
+    text-decoration: none;
+    color: brown;
+}
