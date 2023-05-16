@@ -1,18 +1,47 @@
 .container {
     width: 20%;
     margin: 50vh auto;
-}
-.form {
     display: flex;
     flex-direction: column;
-    row-gap: 10px;
+    row-gap: 15px;
     justify-content: center;
+    align-items: center;
 }
 
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+}
 .button {
     width: 30%;
+    height: 30px;
+    cursor: pointer;
+}
+
+.xls {
+    border: 2px solid green;
+}
+
+.pdf {
+    border: 2px solid sandybrown;
 }
 a {
     text-decoration: none;
     color: brown;
+    font-size: 18px;
+}
+
+input {
+    height: 30px;
+
+}
+
+.error {
+    color: red;
+}
+
+.active {
+    display: none;
 }
