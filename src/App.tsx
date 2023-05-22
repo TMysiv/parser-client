@@ -8,7 +8,7 @@ import close from './images/close.png';
 
 const App: FC = () => {
     const [file, setFile] = useState<File | null>(null);
-    const [newFile, setNewFile] = useState<File | null>(null);
+    const [newFile, setNewFile] = useState<Blob | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [extension, setExtension] = useState<string | null>(null);
     const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -32,18 +32,11 @@ const App: FC = () => {
                 responseType: 'blob',
                 headers: {Authorization: extension}
             });
-            console.log(response)
-            const newFile = new File([response.data], 'newFile', {
+            const newFile = new Blob([response.data],  {
                 type: response.headers['content-type'],
             });
             setNewFile(newFile);
-            console.log(newFile)
-
-            if (response.headers['content-type'].includes('pdf')) {
-                setExtension('newFile.pdf')
-            } else {
-                setExtension('newFile.xls')
-            }
+          setExtension(`newFile.${extension}`)
 
         } catch (err) {
             setError('Error, try again');
@@ -70,10 +63,12 @@ const App: FC = () => {
             <div className={'typeOfFiles'}>
                 <p>2. Select the format you need</p>
                 <div className={'buttons'}>
-                    <button type="submit" className={'button xls'} onClick={() => handleSubmit('xls')}>
+                    <button type="submit" className={'button xls'}
+                            onClick={() => handleSubmit('xls')} disabled={!file}>
                         Exsel format
                     </button>
-                    <button type="submit" className={'button pdf'} onClick={() => handleSubmit('pdf')}>
+                    <button type="submit" className={'button pdf'}
+                            onClick={() => handleSubmit('pdf')} disabled={!file}>
                         PDF format
                     </button>
                 </div>
